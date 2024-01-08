@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-logo">
+          <a href="index.html"><img
+            src="https://livedemo00.template-help.com/wt_prod-20691/images/logo-default.png"
+            alt=""
+          /></a>
+        </div>
+        <nav class="header-nav">
+          <a href="index.html">Home</a>
+          <a href="assortments.html">Assortments</a>
+          <a href="shop.html">Shop</a>
+          <a href="contactUs.html">Contact Us</a>
+        </nav>
+        <div class="header-btns">
+          <div>
+            <form id="searchForm">
+                <input type="search" id="searchInput" placeholder="Search">
+                <img src="./image/search 1.svg" alt="" onclick="performSearch()">
+            </form>
+        </div>
+          <a href="#" id="cartBtn">
+              <img src="./image/iconfinder_00-ELASTOFONT-STORE-READY_bag_2703085 1.svg" alt="Cart">
+          </a>
+          <span id="cartCount">0</span>
+      </div>
+    </header>
+    <!-- SLIDER START -->
+    <main class="main-pagination assortments">
+      <div class="titles">
+      <h2>BROWSE OUR MOVIES!</h2>
+      <h2>BROWSE OUR MOVIES!</h2>
+    </div>
+    </main>
+    <!-- SLIDER FINISH -->
+    <main class="main-assortments">
+      <div class="main-cards">
+        <div class="cards-1">
+          <a href="#"
+            ><img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-1.jpg"
+              alt="" />
+            <p>Ant-Man and the Wasp</p>
+            <p class="p2">2018, USA, Action</p>
+            <!-- stars start -->
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <!-- <label for="star-5" title="Оценка «5»"></label> -->
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+          <a href="#"
+            ><img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-2.jpg"
+              alt="" />
+            <p>Avengers: Infinity War</p>
+            <p class="p2">2018, USA, Action, Fantasy</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <label for="star-5" title="Оценка «5»"></label>
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+          <a href="#"
+            ><img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-3.jpg"
+              alt="" />
+            <p>The Flash</p>
+            <p class="p2">2014, USA, Adventure, Fantasy</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <label for="star-5" title="Оценка «5»"></label>
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+          <a href="#"
+            ><img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-4.jpg"
+              alt="" />
+            <p>Game of Thrones</p>
+            <p class="p2">2018, USA, Adventure, Action</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <label for="star-5" title="Оценка «5»"></label>
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+        </div>
+        
+        <!-- stars finish -->
+        <!-- cards 2 -->
+        <div class="cards-2" style="display: none;">
+          <a href="">
+            <img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-5.jpg"
+              class="img-2" />
+            <p><b>Titans</b></p>
+            <p class="p2">2018, USA, Drama, Adventure</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <label for="star-5" title="Оценка «5»"></label>
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+          <a href=""
+            ><img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-6.jpg"
+              class="img-2" />
+            <p><b>Aquaman</b></p>
+            <p class="p2">2018, USA, Action,Fantasy</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <!-- <label for="star-5" title="Оценка «5»"></label> -->
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+          <a href=""
+            ><img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-7.jpg"
+              class="img-2" />
+            <p><b>Hold the Dark</b></p>
+            <p class="p2">2018, USA, Adventure, Mystery</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <label for="star-5" title="Оценка «5»"></label>
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+          <a href="">
+            <img
+              src="https://livedemo00.template-help.com/wt_prod-20691/images/gallery-8.jpg"
+              class="img-2" />
+            <p><b>The Predator</b></p>
+            <p class="p2">2018, USA, Adventure, Horror</p>
+            <div class="rating-area">
+              <input type="radio" id="star-5" name="rating" value="5" />
+              <label for="star-5" title="Оценка «5»"></label>
+              <input type="radio" id="star-4" name="rating" value="4" />
+              <label for="star-4" title="Оценка «4»"></label>
+              <input type="radio" id="star-3" name="rating" value="3" />
+              <label for="star-3" title="Оценка «3»"></label>
+              <input type="radio" id="star-2" name="rating" value="2" />
+              <label for="star-2" title="Оценка «2»"></label>
+              <input type="radio" id="star-1" name="rating" value="1" />
+              <label for="star-1" title="Оценка «1»"></label></div
+          ></a>
+        </div>
+      </div>
+      <!-- Pagination Start -->
+      <div class="pagination">
+        <button class="arrow-btn" id="prev-btn">&#9664;</button>
+        <button class="page-btn" onclick="changePage(1)">1</button>
+        <button class="page-btn" onclick="changePage(2)">2</button>
+        <button class="arrow-btn" id="next-btn">&#9654;</button>
+      </div>
+      
+      <!-- Pagination Finish -->
+    </main>
+    <footer>
+      <div>
+        <a href="index.html">
+          <img
+            src="https://livedemo00.template-help.com/wt_prod-20691/images/logo-default.png"
+            alt=""
+          />
+        </a>
+      </div>
+      <p>© 2024 All Rights Reserved.</p>
+    </footer>
+    <!-- !Pagination -->
+    <script>
+let currentPage = 1;
+const totalPages = 2;
+function changePage(pageNumber) {
+  if (pageNumber >= 1 && pageNumber <= totalPages) {
+    document.querySelector(".cards-" + currentPage).style.display = "none";
+    currentPage = pageNumber;
+    document.querySelector(".cards-" + currentPage).style.display = "block";
+    updateButtonState();
+  }
+}
+function updateButtonState() {
+  document.getElementById("prev-btn").disabled = currentPage === 1;
+  document.getElementById("next-btn").disabled = currentPage === totalPages;
+}
+document.getElementById("prev-btn").addEventListener("click", function () {
+  changePage(currentPage - 1);
+});
+document.getElementById("next-btn").addEventListener("click", function () {
+  changePage(currentPage + 1);
+});
+updateButtonState();
+
+    </script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

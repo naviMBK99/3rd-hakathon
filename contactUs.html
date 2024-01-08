@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Salsa&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-logo">
+          <a href="index.html"><img
+            src="https://livedemo00.template-help.com/wt_prod-20691/images/logo-default.png"
+            alt=""
+          /></a>
+        </div>
+        <nav class="header-nav">
+          <a href="index.html">Home</a>
+          <a href="assortments.html">Assortments</a>
+          <a href="shop.html">Shop</a>
+          <a href="contactUs.html">Contact Us</a>
+        </nav>
+        <div class="header-btns">
+          <div>
+            <form id="searchForm">
+                <input type="search" id="searchInput" placeholder="Search">
+                <img src="./image/search 1.svg" alt="" onclick="performSearch()">
+            </form>
+        </div>
+          <a href="#" id="cartBtn">
+              <img src="./image/iconfinder_00-ELASTOFONT-STORE-READY_bag_2703085 1.svg" alt="Cart">
+          </a>
+          <span id="cartCount">0</span>
+      </div>
+    </header>
+    <!-- SLIDER START -->
+    <main class="main-contact-container">
+      <div class="main-contact-title">
+        <p>CONTACT US</p>
+        <hr>
+      </div>
+      <div class="main-contact-book">
+        <p>
+          Please fill out the form so that we can save your contact information
+          and regularly update you on the latest events and offers. Your
+          engagement will help us better meet your expectations and create a
+          personalized interaction experience. We appreciate your contribution
+          to building a more meaningful connection between us.
+        </p>
+        <div id="contact-form">
+          <input type="text" placeholder="Your First Name" id="first-name" />
+          <input type="text" placeholder="Your Last Name" id="last-name" />
+          <input type="text" placeholder="Your Phone Number" id="phone-number" />
+          <input type="text" placeholder="Your Email" id="email" />
+          <input type="text" placeholder="Message" id="message">
+          <button class="saveBtn">Save</button>
+        </div>
+        <div id="contacts"></div>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <a href="index.html">
+          <img
+            src="https://livedemo00.template-help.com/wt_prod-20691/images/logo-default.png"
+            alt=""
+          />
+        </a>
+      </div>
+      <p>© 2024 All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      const API = "http://localhost:7800/contacts";
+      const contactForm = document.querySelector("#contact-form");
+      const firstNameInput = document.querySelector("#first-name");
+      const lastNameInput = document.querySelector("#last-name");
+      const phoneNumberInput = document.querySelector("#phone-number");
+      const emailInput = document.querySelector("#email");
+      const messageInput = document.querySelector("#message");
+      const saveBtn = document.querySelector(".saveBtn");
+      const contactsList = document.querySelector("#contacts");
+    
+      saveBtn.addEventListener("click", () => {
+        const firstName = firstNameInput.value.trim();
+        const lastName = lastNameInput.value.trim();
+        const phoneNumber = phoneNumberInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+    
+        if (!firstName || !lastName || !phoneNumber || !email || !message) {
+          alert("Please fill out all fields!");
+          return;
+        }
+    
+        const newContact = {
+          firstName,
+          lastName,
+          phoneNumber,
+          email,
+          message,
+        };
+    
+        createContact(newContact);
+        clearFormInputs();
+      });
+    
+      function createContact(contact) {
+        fetch(API, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(contact),
+        })
+          .then((response) => response.json())
+          .then(() => {
+            readContacts();
+          });
+      }
+    
+      function readContacts() {
+        fetch(API)
+          .then((res) => res.json())
+          .then((data) => {
+            contactsList.innerHTML = "";
+            data.forEach((contact) => {
+              contactsList.innerHTML += `<div>
+                <p>First Name:${contact.firstName} </p>
+                <p>Last Name:${contact.lastName}</p> 
+                <p>Phone Number:${contact.phoneNumber}</p>
+                <p>Email:${contact.email}</p>
+                <p>Meesage:${contact.message}</p>
+                <button class="deleteBtn" data-id="${contact.id}">Delete</button>
+                <button class="editBtn" data-id="${contact.id}">Edit</button></div>`;
+            });
+          });
+      }
+      document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("deleteBtn")) {
+          const contactId = e.target.getAttribute("data-id");
+          deleteContact(contactId);
+        }
+    
+        if (e.target.classList.contains("editBtn")) {
+          const contactId = e.target.getAttribute("data-id");
+          editContact(contactId);
+        }
+      });
+    
+      function deleteContact(id) {
+        fetch(`${API}/${id}`, {
+          method: "DELETE",
+        })
+          .then(() => readContacts());
+      }
+    
+      function editContact(id) {
+        fetch(`${API}/${id}`)
+          .then((res) => res.json())
+          .then((contact) => {
+            firstNameInput.value = contact.firstName;
+            lastNameInput.value = contact.lastName;
+            phoneNumberInput.value = contact.phoneNumber;
+            emailInput.value = contact.email;
+            messageInput.value = contact.message;
+            saveBtn.textContent = "Update";
+            saveBtn.removeEventListener("click", createContact);
+            saveBtn.addEventListener("click", () => updateContact(contact.id));
+          });
+      }
+    
+      function updateContact(id) {
+        const updatedContact = {
+          firstName: firstNameInput.value.trim(),
+          lastName: lastNameInput.value.trim(),
+          phoneNumber: phoneNumberInput.value.trim(),
+          email: emailInput.value.trim(),
+          message: messageInput.value.trim(),
+        };
+    
+        fetch(`${API}/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(updatedContact),
+        })
+          .then(() => {
+            clearFormInputs();
+            readContacts();
+            // Change the Update button back to Save button
+            saveBtn.textContent = "Save";
+            saveBtn.removeEventListener("click", updateContact);
+            saveBtn.addEventListener("click", () => createContact(updatedContact));
+          });
+      }
+    
+      function clearFormInputs() {
+        firstNameInput.value = "";
+        lastNameInput.value = "";
+        phoneNumberInput.value = "";
+        emailInput.value = "";
+        messageInput.value = "";
+      }
+    
+      // Initial read of contacts on page load
+      readContacts();
+    </script>
+    
+    <script src="./js/main.js"></script>
+  </body>
+</html>
